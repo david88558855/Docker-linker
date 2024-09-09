@@ -34,14 +34,14 @@ jobs:
 
     - name: Pull and push snltty/linker-musl-x64 image
       run: |
-        docker pull snltty/linker-musl-x64
-        docker tag snltty/linker-musl-x64 haoxuan8855/linker:x64
+        docker pull snltty/linker-musl-x64:latest
+        docker tag snltty/linker-musl-x64:latest haoxuan8855/linker:x64
         docker push haoxuan8855/linker:x64
 
     - name: Pull and push snltty/linker-musl-arm64 image
       run: |
-        docker pull snltty/linker-musl-arm64
-        docker tag snltty/linker-musl-arm64 haoxuan8855/linker:arm64
+        docker pull snltty/linker-musl-arm64:latest
+        docker tag snltty/linker-musl-arm64:latest haoxuan8855/linker:arm64
         docker push haoxuan8855/linker:arm64
 
     - name: Build and push Docker images
