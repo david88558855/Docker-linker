@@ -34,6 +34,6 @@ jobs:
 
     - name: Pull and push snltty/linker-musl-arm64 image
       run: |
-        docker pull snltty/linker-musl-arm64:latest
+        docker pull --platform linux/arm64 snltty/linker-musl-arm64:latest
         docker tag snltty/linker-musl-arm64:latest haoxuan8855/linker:arm64
         docker push haoxuan8855/linker:arm64
