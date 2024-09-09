@@ -32,23 +32,8 @@ jobs:
     - name: 登录Docker仓库
       run: echo $DOCKER_REGISTRY_PASSWORD | docker login $DOCKER_REGISTRY -u $DOCKER_REGISTRY_USER --password-stdin 
 
-    - name: Pull and push snltty/linker-musl-x64 image
-      run: |
-        docker pull snltty/linker-musl-x64:latest
-        docker tag snltty/linker-musl-x64:latest haoxuan8855/linker:x64
-        docker push haoxuan8855/linker:x64
-
     - name: Pull and push snltty/linker-musl-arm64 image
       run: |
         docker pull snltty/linker-musl-arm64:latest
         docker tag snltty/linker-musl-arm64:latest haoxuan8855/linker:arm64
         docker push haoxuan8855/linker:arm64
-
-    - name: Build and push Docker images
-      run: |
-        docker pull --platform linux/amd64 haoxuan8855/linker:x64 && \
-        docker push haoxuan8855/linker:x64 && \
-        docker pull --platform linux/arm64 haoxuan8855/linker:arm64 && \
-        docker push haoxuan8855/linker:arm64 && \
-        docker manifest create haoxuan8855/linker:latest haoxuan8855/linker:x64 haoxuan8855/linker:arm64 && \
-        docker manifest push haoxuan8855/linker:latest
